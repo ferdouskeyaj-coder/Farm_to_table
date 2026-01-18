@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from 'aos';
 import CountUp from 'react-countup';
@@ -575,11 +576,13 @@ export default function Home() {
                   e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
                 }}
               >
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80"
                   alt="বাংলাদেশী কৃষক খামারে সবজি সংগ্রহ করছেন"
-                  className="w-full h-full object-cover"
-                  loading="eager"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 
                 {/* Overlay Gradient */}
@@ -731,10 +734,12 @@ export default function Home() {
                   className="bg-white rounded-4xl overflow-hidden border-2 border-sage/20 hover:border-forest/30 hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out"
                 >
                   <div className="relative h-72 overflow-hidden bg-gradient-to-br from-sage/10 to-forest/5">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 ease-in-out"
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-300 ease-in-out"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <span className="absolute top-6 left-6 px-5 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full text-sm font-bold shadow-lg">
                       {product.badge}
@@ -821,7 +826,7 @@ export default function Home() {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-forest/80 mb-6 leading-relaxed text-base">"{testimonial.text}"</p>
+                <p className="text-forest/80 mb-6 leading-relaxed text-base">&quot;{testimonial.text}&quot;</p>
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4 pt-4 border-t border-sage/20">

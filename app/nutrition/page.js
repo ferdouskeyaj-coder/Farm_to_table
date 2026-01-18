@@ -359,10 +359,12 @@ export default function Nutrition() {
               className="bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all transform hover:-translate-y-1"
             >
               <div className="relative h-64 overflow-hidden">
-                <img
+                <Image
                   src={food.image}
                   alt={food.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  fill
+                  className="object-cover hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full">
                   <span className="font-bold text-green-600">{food.calories} cal</span>
