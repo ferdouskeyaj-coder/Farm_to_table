@@ -159,71 +159,134 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[100] bg-cream flex items-center justify-center"
+            transition={{ duration: 0.6 }}
+            className="fixed inset-0 z-[100] bg-gradient-to-br from-cream via-white to-green-50 flex items-center justify-center"
           >
             <div className="text-center">
-              {/* Animated Logo */}
+              {/* Professional Animated Logo */}
               <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
+                initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative mb-8"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative mb-12"
               >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 w-32 h-32 mx-auto"
-                >
-                  <div className="absolute inset-0 border-4 border-sage/30 rounded-full"></div>
-                  <div className="absolute inset-0 border-4 border-t-forest border-r-transparent border-b-transparent border-l-transparent rounded-full"></div>
-                </motion.div>
-                
+                {/* Outer Ring Animation */}
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.1, 1],
+                    rotate: 360,
+                    scale: [1, 1.05, 1]
                   }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative w-32 h-32 mx-auto bg-gradient-to-br from-forest to-sage rounded-full flex items-center justify-center shadow-2xl"
+                  transition={{ 
+                    rotate: { duration: 3, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  className="absolute inset-0 w-40 h-40 mx-auto"
                 >
-                  <svg className="w-16 h-16 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
+                  <div className="absolute inset-0 border-[3px] border-forest/20 rounded-full"></div>
+                  <div className="absolute inset-0 border-[3px] border-t-forest border-r-forest/40 border-b-transparent border-l-transparent rounded-full"></div>
+                </motion.div>
+                
+                {/* Inner Ring Animation */}
+                <motion.div
+                  animate={{ 
+                    rotate: -360,
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    ease: "linear"
+                  }}
+                  className="absolute inset-4 w-32 h-32 mx-auto"
+                >
+                  <div className="absolute inset-0 border-[2px] border-sage/30 rounded-full"></div>
+                  <div className="absolute inset-0 border-[2px] border-b-sage border-l-sage/40 border-t-transparent border-r-transparent rounded-full"></div>
+                </motion.div>
+                
+                {/* Center Logo */}
+                <motion.div
+                  animate={{ 
+                    y: [0, -8, 0],
+                  }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="relative w-40 h-40 mx-auto bg-gradient-to-br from-forest via-forest to-sage rounded-3xl flex items-center justify-center shadow-2xl"
+                >
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, -5, 0]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                  >
+                    <svg className="w-20 h-20 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  </motion.div>
+                  
+                  {/* Shine Effect */}
+                  <motion.div
+                    animate={{ 
+                      x: [-200, 200],
+                      opacity: [0, 0.5, 0]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatDelay: 1,
+                      ease: "easeInOut" 
+                    }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-3xl"
+                    style={{ transform: 'skewX(-20deg)' }}
+                  />
                 </motion.div>
               </motion.div>
 
-              {/* Brand Name */}
+              {/* Brand Name with Professional Typography */}
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-3"
               >
-                <h1 className="text-4xl font-extrabold text-forest mb-2">খামার থেকে টেবিল</h1>
-                <p className="text-sage text-lg">তাজা ও জৈব</p>
+                <h1 className="text-5xl font-bold text-forest mb-3 tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                  খামার থেকে টেবিল
+                </h1>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="w-24 h-1 bg-gradient-to-r from-forest to-sage mx-auto rounded-full"
+                />
+                <p className="text-sage text-xl font-medium tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                  Pure & Authentic
+                </p>
               </motion.div>
 
-              {/* Loading Dots */}
+              {/* Progress Bar */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex gap-2 justify-center mt-8"
+                transition={{ delay: 0.8 }}
+                className="mt-12 w-64 mx-auto"
               >
-                {[0, 1, 2].map((i) => (
+                <div className="h-1.5 bg-forest/10 rounded-full overflow-hidden">
                   <motion.div
-                    key={i}
-                    animate={{ 
-                      scale: [1, 1.5, 1],
-                      opacity: [0.3, 1, 0.3]
-                    }}
+                    animate={{ x: ['-100%', '100%'] }}
                     transition={{ 
                       duration: 1.5, 
                       repeat: Infinity, 
-                      delay: i * 0.2 
+                      ease: "easeInOut" 
                     }}
-                    className="w-3 h-3 bg-forest rounded-full"
+                    className="h-full w-1/3 bg-gradient-to-r from-forest to-sage rounded-full"
                   />
-                ))}
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -261,21 +324,21 @@ export default function Home() {
           <div className="flex items-center justify-between h-24">
             
             {/* Professional Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-4 group">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
-                className="relative w-14 h-14 bg-gradient-to-br from-forest to-sage rounded-2xl flex items-center justify-center shadow-lg"
+                className="relative w-16 h-16 bg-gradient-to-br from-forest to-sage rounded-2xl flex items-center justify-center shadow-xl"
                 style={{ willChange: 'transform' }}
               >
-                <svg className="w-8 h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <svg className="w-9 h-9 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-cream"></div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-cream animate-pulse"></div>
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-xl font-extrabold text-forest leading-none tracking-tight">খামার থেকে টেবিল</span>
-                <span className="text-xs text-sage leading-none mt-1 font-semibold">Farm to Table BD</span>
+                <span className="text-2xl font-bold text-forest leading-none tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>খামার থেকে টেবিল</span>
+                <span className="text-xs text-sage/80 leading-none mt-1.5 font-medium tracking-wider uppercase" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>Pure & Authentic</span>
               </div>
             </Link>
 
@@ -431,11 +494,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left Content */}
-            <div className="space-y-8 lg:space-y-10">
+            <div className="space-y-10 lg:space-y-14">
               
               {/* Main Headline */}
-              <div data-aos="fade-right">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-forest leading-[1.1] tracking-tight">
+              <div data-aos="fade-right" className="py-4">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-forest leading-[1.2] tracking-tight mb-6">
                   খামার থেকে সরাসরি<br />
                   আপনার টেবিলে
                 </h1>
