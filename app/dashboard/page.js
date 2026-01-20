@@ -1018,13 +1018,15 @@ export default function Dashboard() {
                   />
                   <div className="absolute top-4 left-4">
                     <motion.span
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.05 + 0.3, type: "spring" }}
-                      animate={{
+                      initial={{ y: -20, opacity: 0, scale: 1 }}
+                      animate={{ 
+                        y: 0, 
+                        opacity: 1,
                         scale: product.badge === "তাজা" ? [1, 1.05, 1] : 1
                       }}
                       transition={{
+                        y: { delay: index * 0.05 + 0.3, type: "spring" },
+                        opacity: { delay: index * 0.05 + 0.3 },
                         scale: {
                           duration: 3,
                           repeat: Infinity,
