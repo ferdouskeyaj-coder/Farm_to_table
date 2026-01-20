@@ -471,7 +471,7 @@ export default function Dashboard() {
           nameEn: "Walnuts",
           price: "৳950",
           unit: "প্রতি কেজি",
-          image: "https://images.unsplash.com/photo-1622484211850-7b6e2a3e0b6f?w=800&q=80",
+          image: "/walnuts-akhrot.jpg",
           harvestTime: "২০ দিন আগে",
         inStock: true,
         stockQuantity: 40,
