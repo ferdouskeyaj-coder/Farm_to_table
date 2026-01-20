@@ -5,13 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-export default function ProductDetail() {
-  const params = useParams();
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("description");
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  const product = {
+const productsData = {
+  1: {
     id: 1,
     name: "ফুলকপি",
     nameEn: "Premium Organic Cauliflower",
@@ -30,7 +25,6 @@ export default function ProductDetail() {
     badges: ["জৈব", "খামার থেকে সরাসরি", "আজ তাজা"],
     category: "শাক-সবজি",
     harvestTime: "২ দিন আগে",
-    
     nutrition: {
       calories: 25,
       protein: 2,
@@ -47,7 +41,6 @@ export default function ProductDetail() {
         { name: "ফোলেট", amount: "57mcg" }
       ]
     },
-    
     benefits: [
       "রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে",
       "হজম শক্তি বাড়ায় এবং কোষ্ঠকাঠিন্য দূর করে",
@@ -55,17 +48,13 @@ export default function ProductDetail() {
       "ক্যান্সার প্রতিরোধে সহায়ক",
       "হাড় মজবুত করে ও ত্বক উজ্জ্বল রাখে"
     ],
-    
     description: "এই ফুলকপি সম্পূর্ণ জৈব পদ্ধতিতে উৎপাদিত। কোনো রাসায়নিক সার বা কীটনাশক ব্যবহার করা হয়নি। তাজা এবং পুষ্টিগুণে ভরপুর এই ফুলকপি আপনার পরিবারের স্বাস্থ্যের জন্য নিরাপদ।",
-    
     howMade: "প্রাকৃতিক কম্পোস্ট সার ব্যবহার করে জৈব পদ্ধতিতে চাষ করা হয়েছে। কোনো ক্ষতিকর রাসায়নিক ব্যবহার করা হয়নি। প্রতিদিন সকালে তাজা অবস্থায় সংগ্রহ করা হয়।",
-    
     delivery: {
       time: "২-৩ ঘণ্টা",
       isFree: true,
       minOrder: 500
     },
-    
     farmer: {
       name: "আব্দুল করিম",
       location: "মানিকগঞ্জ, ঢাকা",
@@ -76,19 +65,11 @@ export default function ProductDetail() {
       image: "👨‍🌾",
       description: "জৈব চাষে বিশেষজ্ঞ। ১৫ বছর ধরে রাসায়নিক মুক্ত সবজি উৎপাদন করছি।"
     },
-    
     ratings: {
       average: 4.8,
       total: 245,
-      distribution: {
-        5: 180,
-        4: 45,
-        3: 15,
-        2: 3,
-        1: 2
-      }
+      distribution: { 5: 180, 4: 45, 3: 15, 2: 3, 1: 2 }
     },
-    
     reviews: [
       {
         id: 1,
@@ -107,34 +88,259 @@ export default function ProductDetail() {
         verified: true
       }
     ],
-    
-    similarProducts: [
+    similarProducts: [2, 3, 4]
+  },
+  2: {
+    id: 2,
+    name: "বাঁধাকপি",
+    nameEn: "Fresh Organic Cabbage",
+    price: 40,
+    originalPrice: 55,
+    discount: 27,
+    unit: "প্রতি কেজি",
+    image: "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=800&q=80",
+      "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=800&q=80"
+    ],
+    stock: 200,
+    stockStatus: "inStock",
+    badges: ["তাজা", "জৈব", "খামার থেকে সরাসরি"],
+    category: "শাক-সবজি",
+    harvestTime: "১ দিন আগে",
+    nutrition: {
+      calories: 22,
+      protein: 1.3,
+      fat: 0.1,
+      carbs: 5.8,
+      fiber: 2.5,
+      vitamins: [
+        { name: "ভিটামিন C", amount: "36.6mg", percentage: 61 },
+        { name: "ভিটামিন K", amount: "76mcg", percentage: 95 }
+      ],
+      minerals: [
+        { name: "পটাশিয়াম", amount: "170mg" },
+        { name: "ক্যালসিয়াম", amount: "40mg" }
+      ]
+    },
+    benefits: [
+      "হজমশক্তি উন্নত করে",
+      "ওজন কমাতে সাহায্য করে",
+      "রক্তচাপ নিয়ন্ত্রণে রাখে",
+      "ত্বক ও চুলের জন্য উপকারী"
+    ],
+    description: "সম্পূর্ণ জৈব পদ্ধতিতে চাষ করা তাজা বাঁধাকপি। পুষ্টিগুণে ভরপুর এবং স্বাস্থ্যকর।",
+    howMade: "জৈব সার ব্যবহার করে প্রাকৃতিক পদ্ধতিতে চাষ করা হয়েছে। কোনো রাসায়নিক ব্যবহার করা হয়নি।",
+    delivery: {
+      time: "২-৩ ঘণ্টা",
+      isFree: true,
+      minOrder: 500
+    },
+    farmer: {
+      name: "রহিম উদ্দিন",
+      location: "সাভার, ঢাকা",
+      experience: "১২ বছর",
+      totalProducts: 38,
+      rating: 4.7,
+      verified: true,
+      image: "👨‍🌾",
+      description: "জৈব সবজি চাষে অভিজ্ঞ। স্বাস্থ্যকর খাবার উৎপাদনে বিশ্বাসী।"
+    },
+    ratings: {
+      average: 4.7,
+      total: 189,
+      distribution: { 5: 140, 4: 35, 3: 10, 2: 3, 1: 1 }
+    },
+    reviews: [
       {
-        id: 2,
-        name: "বাঁধাকপি",
-        nameEn: "Cabbage",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=800&q=80",
-        badge: "তাজা"
-      },
-      {
-        id: 3,
-        name: "গাজর",
-        nameEn: "Carrot",
-        price: 80,
-        image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&q=80",
-        badge: "জৈব"
-      },
-      {
-        id: 4,
-        name: "টমেটো",
-        nameEn: "Tomato",
-        price: 120,
-        image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&q=80",
-        badge: "তাজা"
+        id: 1,
+        name: "নাজমা আক্তার",
+        rating: 5,
+        date: "১ দিন আগে",
+        comment: "খুব তাজা এবং সুন্দর। দাম ও মান দুটোই ভালো।",
+        verified: true
       }
-    ]
-  };
+    ],
+    similarProducts: [1, 3, 4]
+  },
+  3: {
+    id: 3,
+    name: "গাজর",
+    nameEn: "Premium Fresh Carrot",
+    price: 80,
+    originalPrice: 100,
+    discount: 20,
+    unit: "প্রতি কেজি",
+    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&q=80",
+      "https://images.unsplash.com/photo-1582515073490-39981397c445?w=800&q=80"
+    ],
+    stock: 120,
+    stockStatus: "inStock",
+    badges: ["জৈব", "প্রিমিয়াম", "তাজা"],
+    category: "শাক-সবজি",
+    harvestTime: "৩ দিন আগে",
+    nutrition: {
+      calories: 41,
+      protein: 0.9,
+      fat: 0.2,
+      carbs: 10,
+      fiber: 2.8,
+      vitamins: [
+        { name: "ভিটামিন A", amount: "835mcg", percentage: 104 },
+        { name: "ভিটামিন K", amount: "13.2mcg", percentage: 16 }
+      ],
+      minerals: [
+        { name: "পটাশিয়াম", amount: "320mg" },
+        { name: "ক্যালসিয়াম", amount: "33mg" }
+      ]
+    },
+    benefits: [
+      "চোখের দৃষ্টিশক্তি বাড়ায়",
+      "ত্বক উজ্জ্বল করে",
+      "রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে",
+      "হার্ট সুস্থ রাখে"
+    ],
+    description: "মিষ্টি এবং রসালো গাজর। ভিটামিন A সমৃদ্ধ এই গাজর চোখের জন্য অত্যন্ত উপকারী।",
+    howMade: "জৈব পদ্ধতিতে চাষ করা। কোনো রাসায়নিক সার বা কীটনাশক ব্যবহার করা হয়নি।",
+    delivery: {
+      time: "২-৩ ঘণ্টা",
+      isFree: true,
+      minOrder: 500
+    },
+    farmer: {
+      name: "কামাল হোসেন",
+      location: "নরসিংদী",
+      experience: "২০ বছর",
+      totalProducts: 52,
+      rating: 4.9,
+      verified: true,
+      image: "👨‍🌾",
+      description: "দীর্ঘ অভিজ্ঞতা সম্পন্ন কৃষক। মানসম্মত সবজি উৎপাদনে দক্ষ।"
+    },
+    ratings: {
+      average: 4.9,
+      total: 312,
+      distribution: { 5: 280, 4: 25, 3: 5, 2: 1, 1: 1 }
+    },
+    reviews: [
+      {
+        id: 1,
+        name: "রিনা বেগম",
+        rating: 5,
+        date: "৩ দিন আগে",
+        comment: "অসাধারণ মিষ্টি এবং তাজা। বাচ্চারা খুব পছন্দ করেছে।",
+        verified: true
+      }
+    ],
+    similarProducts: [1, 2, 4]
+  },
+  4: {
+    id: 4,
+    name: "টমেটো",
+    nameEn: "Fresh Red Tomato",
+    price: 120,
+    originalPrice: 140,
+    discount: 14,
+    unit: "প্রতি কেজি",
+    image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&q=80",
+      "https://images.unsplash.com/photo-1546470427-227a8e3c5e6e?w=800&q=80"
+    ],
+    stock: 80,
+    stockStatus: "limited",
+    badges: ["তাজা", "সীমিত স্টক"],
+    category: "শাক-সবজি",
+    harvestTime: "১ দিন আগে",
+    nutrition: {
+      calories: 18,
+      protein: 0.9,
+      fat: 0.2,
+      carbs: 3.9,
+      fiber: 1.2,
+      vitamins: [
+        { name: "ভিটামিন C", amount: "13.7mg", percentage: 23 },
+        { name: "ভিটামিন K", amount: "7.9mcg", percentage: 10 }
+      ],
+      minerals: [
+        { name: "পটাশিয়াম", amount: "237mg" },
+        { name: "ফোলেট", amount: "15mcg" }
+      ]
+    },
+    benefits: [
+      "হার্ট সুস্থ রাখে",
+      "ত্বক উজ্জ্বল করে",
+      "ক্যান্সার প্রতিরোধে সহায়ক",
+      "হাড় মজবুত করে"
+    ],
+    description: "টাটকা লাল টমেটো। রান্নায় এবং সালাদে ব্যবহারের জন্য আদর্শ।",
+    howMade: "প্রাকৃতিক পদ্ধতিতে চাষ করা। সম্পূর্ণ তাজা এবং পাকা।",
+    delivery: {
+      time: "২-৩ ঘণ্টা",
+      isFree: false,
+      minOrder: 500
+    },
+    farmer: {
+      name: "জামাল উদ্দিন",
+      location: "গাজীপুর",
+      experience: "১৮ বছর",
+      totalProducts: 42,
+      rating: 4.6,
+      verified: true,
+      image: "👨‍🌾",
+      description: "টমেটো চাষে বিশেষজ্ঞ। মানসম্মত পণ্য সরবরাহে প্রতিশ্রুতিবদ্ধ।"
+    },
+    ratings: {
+      average: 4.6,
+      total: 156,
+      distribution: { 5: 110, 4: 30, 3: 12, 2: 3, 1: 1 }
+    },
+    reviews: [
+      {
+        id: 1,
+        name: "সুমন আহমেদ",
+        rating: 5,
+        date: "২ দিন আগে",
+        comment: "দারুণ টমেটো। রসালো এবং মিষ্টি।",
+        verified: true
+      }
+    ],
+    similarProducts: [1, 2, 3]
+  }
+};
+
+export default function ProductDetail() {
+  const params = useParams();
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState("description");
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  const productId = parseInt(params.id);
+  const product = productsData[productId];
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-cream">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-forest mb-4">পণ্য পাওয়া যায়নি</h1>
+          <Link href="/dashboard" className="text-sage hover:text-forest underline">
+            ড্যাশবোর্ডে ফিরে যান
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const similarProductsData = product.similarProducts.map(id => ({
+    id: productsData[id].id,
+    name: productsData[id].name,
+    nameEn: productsData[id].nameEn,
+    price: productsData[id].price,
+    image: productsData[id].image,
+    badge: productsData[id].badges[0]
+  }));
 
   const getStockColor = (status) => {
     if (status === "inStock") return "bg-green-500";
@@ -734,7 +940,7 @@ export default function ProductDetail() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {product.similarProducts.map((item, index) => (
+            {similarProductsData.map((item, index) => (
               <Link
                 key={item.id}
                 href={`/product/${item.id}`}
