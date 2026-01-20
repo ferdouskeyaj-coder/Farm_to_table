@@ -735,35 +735,39 @@ export default function ProductDetail() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {product.similarProducts.map((item, index) => (
-              <motion.div
+              <Link
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                href={`/product/${item.id}`}
               >
-                <div className="relative h-64">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                  <span className="absolute top-4 left-4 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-sm font-bold">
-                    {item.badge}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-forest mb-1">{item.name}</h3>
-                  <p className="text-sm text-sage mb-4">{item.nameEn}</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-3xl font-bold text-forest">৳{item.price}</p>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="px-4 py-2 bg-forest text-white rounded-2xl font-bold"
-                    >
-                      দেখুন
-                    </motion.button>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                >
+                  <div className="relative h-64">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <span className="absolute top-4 left-4 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-sm font-bold">
+                      {item.badge}
+                    </span>
                   </div>
-                </div>
-              </motion.div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-forest mb-1">{item.name}</h3>
+                    <p className="text-sm text-sage mb-4">{item.nameEn}</p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-3xl font-bold text-forest">৳{item.price}</p>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="px-4 py-2 bg-forest text-white rounded-2xl font-bold"
+                      >
+                        দেখুন
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>

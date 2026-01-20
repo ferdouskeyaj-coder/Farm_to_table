@@ -1079,14 +1079,25 @@ export default function Dashboard() {
                       <p className="text-3xl font-bold text-forest">{product.price}</p>
                       <p className="text-xs text-sage">{product.unit}</p>
                     </div>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => setSelectedItem(product)}
-                      className="px-4 py-2 bg-gradient-to-r from-forest to-sage text-white rounded-2xl font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      বিস্তারিত
-                    </motion.button>
+                    <div className="flex gap-2">
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setSelectedItem(product)}
+                        className="px-4 py-2 bg-gradient-to-r from-forest to-sage text-white rounded-2xl font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-300"
+                      >
+                        তথ্য
+                      </motion.button>
+                      <Link href={`/product/${product.id}`}>
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="px-4 py-2 bg-blue-500 text-white rounded-2xl font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                          বিস্তারিত
+                        </motion.button>
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Stock Info */}
