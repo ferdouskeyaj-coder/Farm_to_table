@@ -1,0 +1,23 @@
+
+> firm-to-table@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 115s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/8) ...
+   Generating static pages (2/8) 
+   Generating static pages (4/8) 
+   Generating static pages (6/8) 
+ ✓ Generating static pages (8/8)
+   Finalizing page optimization ...
+   Collecting build traces ...
+[Error: ENOENT: no such file or directory, open '/mnt/d/Projects/Firm_to_table/.next/server/pages/_app.js.nft.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/mnt/d/Projects/Firm_to_table/.next/server/pages/_app.js.nft.json'
+}
