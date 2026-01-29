@@ -163,7 +163,7 @@ export default function UserPage() {
     { 
       icon: "📦", 
       label: "আমার অর্ডার", 
-      href: "/user/orders", 
+      href: "/orders", 
       id: "orders",
       badge: 3,
       tooltip: "সব অর্ডার দেখুন"
@@ -171,7 +171,7 @@ export default function UserPage() {
     { 
       icon: "❤️", 
       label: "উইশলিস্ট", 
-      href: "/user/wishlist", 
+      href: "/wishlist", 
       id: "wishlist",
       badge: 12,
       tooltip: "পছন্দের পণ্য"
@@ -179,21 +179,21 @@ export default function UserPage() {
     { 
       icon: "📍", 
       label: "ঠিকানা", 
-      href: "/user/addresses", 
+      href: "/user", 
       id: "addresses",
       tooltip: "সংরক্ষিত ঠিকানা"
     },
     { 
       icon: "⚙️", 
       label: "সেটিংস", 
-      href: "/user/settings", 
+      href: "/settings", 
       id: "settings",
       tooltip: "প্রোফাইল সেটিংস"
     },
     { 
       icon: "🚪", 
       label: "লগ আউট", 
-      href: "/logout", 
+      href: "/", 
       id: "logout",
       tooltip: "লগ আউট করুন"
     }
