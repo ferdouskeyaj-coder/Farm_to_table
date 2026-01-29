@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(3);
+  const { cartCount } = useCart();
   const pathname = usePathname();
 
   useEffect(() => {

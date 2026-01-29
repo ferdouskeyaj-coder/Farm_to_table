@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState("grid");
-  const [cartItems, setCartItems] = useState([]);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const { cartItems, cartCount, addToCart: addToCartContext } = useCart();
 
   const categories = [
     { id: "all", name: "সব পণ্য", icon: "🛒", color: "from-forest to-sage" },
@@ -200,8 +201,8 @@ export default function Menu() {
     return categoryMatch && searchMatch;
   });
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+  const handleAddToCart = (product) => {
+    addToCartContext(product);
     setToastMessage(`${product.name} কার্টে যোগ করা হয়েছে!`);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
@@ -415,7 +416,7 @@ export default function Menu() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => addToCart(product)}
+                      onClick={() => handleAddToCart(product)}
                       className="flex-1 px-4 py-2.5 sm:py-3 bg-gradient-to-r from-forest to-sage text-cream rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -432,21 +433,23 @@ export default function Menu() {
       </section>
 
       {/* Floating Cart Button */}
-      {cartItems.length > 0 && (
-        <motion.button
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-forest to-sage text-cream rounded-full shadow-2xl flex items-center justify-center z-50"
-        >
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-          </svg>
-          <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
-            {cartItems.length}
-          </span>
-        </motion.button>
+      {cartCount > 0 && (
+        <Link href="/cart">
+          <motion.button
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-forest to-sage text-cream rounded-full shadow-2xl flex items-center justify-center z-50"
+          >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
+              {cartCount}
+            </span>
+          </motion.button>
+        </Link>
       )}
 
       {/* Toast Notification */}
