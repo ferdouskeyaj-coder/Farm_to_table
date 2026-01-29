@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Menu() {
@@ -349,12 +348,10 @@ export default function Menu() {
               >
                 {/* Product Image */}
                 <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-sage/10 to-forest/5">
-                  <Image
+                  <img
                     src={product.image}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   
                   {/* Badges */}
