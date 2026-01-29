@@ -153,6 +153,10 @@ export default function Header() {
                       <span className="text-3xl">🌱</span>
                       <span className="font-bold">আমাদের সম্পর্কে</span>
                     </Link>
+                    <Link href="/contact" className="flex items-center gap-4 px-6 py-4 text-forest hover:bg-sage/10 transition-all">
+                      <span className="text-3xl">📞</span>
+                      <span className="font-bold">যোগাযোগ</span>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -251,6 +255,11 @@ export default function Header() {
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)}>
                 <div className={`px-4 py-3 rounded-2xl font-semibold ${isActive('/about') ? 'bg-forest text-cream' : 'text-forest hover:bg-sage/10'}`}>
                   আমাদের সম্পর্কে
+                </div>
+              </Link>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <div className={`px-4 py-3 rounded-2xl font-semibold ${isActive('/contact') ? 'bg-forest text-cream' : 'text-forest hover:bg-sage/10'}`}>
+                  যোগাযোগ
                 </div>
               </Link>
               <Link href="/user" onClick={() => setIsMobileMenuOpen(false)}>
