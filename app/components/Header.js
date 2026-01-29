@@ -182,22 +182,24 @@ export default function Header() {
               </motion.button>
             </Link>
 
-            <motion.button 
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative p-2 sm:p-3 hover:bg-sage/10 rounded-full transition-all"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-              <motion.span 
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute -top-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-forest text-cream text-[10px] sm:text-xs rounded-full flex items-center justify-center font-bold"
+            <Link href="/cart">
+              <motion.button 
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative p-2 sm:p-3 hover:bg-sage/10 rounded-full transition-all"
               >
-                {cartCount}
-              </motion.span>
-            </motion.button>
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <motion.span 
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                  className="absolute -top-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-forest text-cream text-[10px] sm:text-xs rounded-full flex items-center justify-center font-bold"
+                >
+                  {cartCount}
+                </motion.span>
+              </motion.button>
+            </Link>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
