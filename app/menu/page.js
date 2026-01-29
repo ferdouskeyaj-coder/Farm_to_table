@@ -9,6 +9,8 @@ export default function Menu() {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState("grid");
   const [cartItems, setCartItems] = useState([]);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const categories = [
     { id: "all", name: "সব পণ্য", icon: "🛒", color: "from-forest to-sage" },
@@ -200,7 +202,9 @@ export default function Menu() {
 
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
-    alert(`${product.name} কার্টে যোগ করা হয়েছে!`);
+    setToastMessage(`${product.name} কার্টে যোগ করা হয়েছে!`);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
   };
 
   return (
@@ -444,6 +448,23 @@ export default function Menu() {
           </span>
         </motion.button>
       )}
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-24 right-8 bg-forest text-cream px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center gap-3"
+          >
+            <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span className="font-semibold">{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
